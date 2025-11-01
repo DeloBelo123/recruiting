@@ -1,6 +1,6 @@
 import pino from "pino";
 
-    const isDevelopment = process.env.NODE_ENV === "development" || process.env.NODE_ENV === undefined
+const isDevelopment = process.env.NODE_ENV === "development" || process.env.NODE_ENV === undefined
 
 export const logger = isDevelopment 
   ? pino({
