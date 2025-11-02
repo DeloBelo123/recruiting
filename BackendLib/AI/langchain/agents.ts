@@ -3,7 +3,7 @@ import { SupabaseVectorStore,OllamaEmbeddings,RecursiveCharacterTextSplitter,Doc
 import { MessagesPlaceholder } from "@langchain/core/prompts"
 import { z } from "zod"
 import { fromZodError } from "zod-validation-error"
-import { supabase } from "../supabase/server"
+import { supabase } from "../../supabase/server"
 
 const dev_mode = process.env.DEV_MODE === "true"
 
@@ -15,6 +15,23 @@ new my.ChatGroq({
     apiKey: process.env.CHATGROQ_API_KEY,
      model: "llama-3.3-70b-versatile"
 })
+
+
+/**
+ * 
+ * 
+ * 
+ * 
+ *  ADD_CONTEXT() IST FLAWED!!!!! TESTE ES NOCHMAL BEVOR DU ES NUTZT!!!! VERMEHRTE EMBEDDINGS IN DER VEKTORDB PRO DURCHLAUF DES CODES!!!
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 
 // types
 export interface BaseInvokeSchema {
@@ -51,7 +68,7 @@ export function turn_to_docs(data:string[]): my.Document[] {
     return docs
 }
 
-export async function structure<T extends z.ZodObject<any,any,any>>({data,inTo}:{data:any,inTo:T}):Promise<z.infer<T>>{
+export async function structure<T extends z.ZodObject<any,any>>({data,inTo}:{data:any,inTo:T}):Promise<z.infer<T>>{
     const architect = new Architect(inTo)
     const respo = await architect.structure(data)
     return respo as z.infer<typeof inTo>
@@ -113,7 +130,7 @@ abstract class AIBluePrint {
         this.description = description || "keine beschreibung"
         this.LLM = LLM || llm
         this.output_strukture = output_strukture
-        this.json_parser =  my.StructuredOutputParser.fromZodSchema(output_strukture)
+        this.json_parser =  my.StructuredOutputParser.fromZodSchema(output_strukture as any)
         this.setupPrompt(prompt,is_llm )
     }
 
@@ -134,7 +151,7 @@ abstract class AIBluePrint {
  * @param output_strukture die Struktur des output die die LLM returnen soll
  * @param LLM das LLM das für die chain verwendet wird, hat aber schon einen ChatGroq/ChatOllama als default
  */
-export class LLMChain<K extends z.ZodObject<any,any,any> = typeof BaseOutputSchema,T extends Record<string,any> = BaseInvokeSchema> extends AIBluePrint {
+export class LLMChain<K extends z.ZodObject<any,any> = typeof BaseOutputSchema,T extends Record<string,any> = BaseInvokeSchema> extends AIBluePrint {
     private vectore_store: my.SupabaseVectorStore | undefined
     private retrieval_chain: my.Runnable | undefined
     private chain: my.Runnable | undefined
@@ -215,7 +232,7 @@ export class LLMChain<K extends z.ZodObject<any,any,any> = typeof BaseOutputSche
 }
 
 
-export class Architect<T extends z.ZodObject<any,any,any>> {
+export class Architect<T extends z.ZodObject<any,any>> {
     public output_strukture: T
     public Name: string | undefined
     public architect: LLMChain<T, BaseInvokeSchema>
@@ -255,7 +272,7 @@ export class Architect<T extends z.ZodObject<any,any,any>> {
  * @param LLM das LLM das für die chain verwendet wird, hat aber schon einen ChatGroq/ChatOllama als default
  * @param tools die tools die das llm aurufen kann, müssen DynamicStructuredTools sein
  */
-export class OneCallAgent<K extends z.ZodObject<any,any,any>,T extends Record<string,any> = BaseInvokeSchema> extends AIBluePrint {
+export class OneCallAgent<K extends z.ZodObject<any,any>,T extends Record<string,any> = BaseInvokeSchema> extends AIBluePrint {
     private architect: Architect<z.infer<typeof this.output_strukture>> 
     private tools: my.DynamicStructuredTool[] 
     private llm_with_tools: my.Runnable
