@@ -2,19 +2,12 @@ import * as fs from 'fs/promises'
 import * as path from 'path'
 import { exec } from 'child_process'
 import { promisify } from 'util'
-import * as readline from 'readline'
+import { input } from './cli'
 
 const execAsync = promisify(exec)
 
 function getProjectRoot(): string {
     return path.resolve(__dirname, '../../../..')
-}
-
-async function createRLInterface() {
-    return readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    })
 }
 
 
@@ -178,24 +171,14 @@ export async function kill_tree(dir: string): Promise<void> {
         return
     }
     
-    const rl = await createRLInterface()
+    const answer = await input(`wollen sie den ordner: '${dir}' und somit den gesammten inhalt von ihm löschen?. Nicht rückgängig Y/n `)
     
-    return new Promise((resolve) => {
-        rl.question(`wollen sie den ordner: '${dir}' und somit den gesammten inhalt von ihm löschen?. Nicht rückgängig Y/n `, async (answer) => {
-            if (answer.toLowerCase() === 'y') {
-                await fs.rm(dir, { recursive: true, force: true })
-                console.log('gesammter Baum wurde gelöscht')
-                rl.close()
-                resolve()
-            } else if (answer.toLowerCase() === 'n') {
-                console.log(`'${dir}' löschvorgang wurde abgebrochen`)
-                rl.close()
-                resolve()
-            } else {
-                console.log("falsche eingabe, sie müssen entweder: 'Y/y' für 'Yes' oder 'N/n' für 'No' eingeben")
-                rl.close()
-                resolve()
-            }
-        })
-    })
+    if (answer.toLowerCase() === 'y') {
+        await fs.rm(dir, { recursive: true, force: true })
+        console.log('gesammter Baum wurde gelöscht')
+    } else if (answer.toLowerCase() === 'n') {
+        console.log(`'${dir}' löschvorgang wurde abgebrochen`)
+    } else {
+        console.log("falsche eingabe, sie müssen entweder: 'Y/y' für 'Yes' oder 'N/n' für 'No' eingeben")
+    }
 }

@@ -1,0 +1,26 @@
+
+für allgemeine Design übernahme inclusive farben    
+```
+Create a JSON profile design system that extracts visual data from these screenshots
+so that I can use the JSON output in Cursor to give it context on how to replicate such design systems
+in a consistent style. Avoid including the contents of the specific images. 
+The output should include the design style, the structure and anything that`ll help an AI replicate such designs
+```
+
+für Struktur und Komponenten übernahme, farbe jedoch von der globals.css datei
+```
+Create a JSON profile design system that extracts only the **structure and components** from these screenshots 
+so that I can use the JSON output in Cursor to replicate the website layout and component hierarchy
+in a consistent style. **Do not include the colors from the screenshots**. 
+Instead, use the colors defined in my `globals.css` file for all styling. 
+The output should include component types, layout positions, spacing, typography sizes, and any structural details 
+that will help an AI replicate the design accurately while keeping my own color scheme.
+```
+
+für das ausführen des designs
+```
+You are now in Agent Mode. Build a website based on the JSON-schema in the design.json file.
+Use the design specifications exactly (colors, typography, layout), 
+but generate placeholder content for text and images. 
+Do not invent new colors or fonts.
+```
