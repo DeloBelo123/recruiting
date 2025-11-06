@@ -21,7 +21,7 @@ if (!stripeSecretAPIKey) throw new Error("No STRIPE_SECRET_KEY in env")
 if (!stripeWebhookKey) throw new Error("No STRIPE_WEBHOOK_KEY in env")
 
 export const stripe = new Stripe(stripeSecretAPIKey,{
-            apiVersion: "2025-09-30.clover",
+            apiVersion: "2025-10-29.clover",
             typescript: true
         })      
 
@@ -36,7 +36,7 @@ export class StripeHandler<T extends StripeSupabase = StripeSupabase> {
         this.webhook_key = webhook_key
         this.dataTable = dataTable
         this.stripe = new Stripe(secret_key,{
-            apiVersion: "2025-09-30.clover",
+            apiVersion: "2025-10-29.clover",
             typescript: true
         })
 
