@@ -1,0 +1,1 @@
+# mach user konfiguration (yanni du guckst in db oder crm nach dieser nummer und holst die daten als kontext für ai im call.)

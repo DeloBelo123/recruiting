@@ -1,7 +1,19 @@
-export default function Main(){
-  return(
+import Header from './components/Header';
+import Hero from './components/Hero';
+import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
+import Pricing from './components/Pricing';
+import Footer from './components/Footer';
+
+export default function Main() {
+  return (
     <>
-      <h1 className=" text-3xl text-my-blue/30 ">Hello World</h1>
+      <Header />
+      <Hero />
+      <Features />
+      <HowItWorks />
+      <Pricing />
+      <Footer />
     </>
-  )
+  );
 }

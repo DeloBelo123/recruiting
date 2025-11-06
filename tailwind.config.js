@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ['class'],
   content: [
     './src/**/*.{js,ts,jsx,tsx}',
     './src/app/**/*.{js,ts,jsx,tsx}',
@@ -7,10 +8,73 @@ export default {
   theme: {
     extend: {
       colors: {
-
+        background: 'rgb(var(--background-rgb) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground-rgb) / <alpha-value>)',
+        card: 'rgb(var(--card-rgb) / <alpha-value>)',
+        'card-foreground': 'rgb(var(--card-foreground-rgb) / <alpha-value>)',
+        popover: 'rgb(var(--popover-rgb) / <alpha-value>)',
+        'popover-foreground': 'rgb(var(--popover-foreground-rgb) / <alpha-value>)',
+        primary: 'rgb(var(--primary-rgb) / <alpha-value>)',
+        'primary-foreground': 'rgb(var(--primary-foreground-rgb) / <alpha-value>)',
+        secondary: 'rgb(var(--secondary-rgb) / <alpha-value>)',
+        'secondary-foreground': 'rgb(var(--secondary-foreground-rgb) / <alpha-value>)',
+        muted: 'rgb(var(--muted-rgb) / <alpha-value>)',
+        'muted-foreground': 'rgb(var(--muted-foreground-rgb) / <alpha-value>)',
+        accent: 'rgb(var(--accent-rgb) / <alpha-value>)',
+        'accent-foreground': 'rgb(var(--accent-foreground-rgb) / <alpha-value>)',
+        destructive: 'rgb(var(--destructive-rgb) / <alpha-value>)',
+        'destructive-foreground': 'rgb(var(--destructive-foreground-rgb) / <alpha-value>)',
+        border: 'rgb(var(--border-rgb) / <alpha-value>)',
+        input: 'rgb(var(--input-rgb) / <alpha-value>)',
+        ring: 'rgb(var(--ring-rgb) / <alpha-value>)',
+        'chart-1': 'rgb(var(--chart-1-rgb) / <alpha-value>)',
+        'chart-2': 'rgb(var(--chart-2-rgb) / <alpha-value>)',
+        'chart-3': 'rgb(var(--chart-3-rgb) / <alpha-value>)',
+        'chart-4': 'rgb(var(--chart-4-rgb) / <alpha-value>)',
+        'chart-5': 'rgb(var(--chart-5-rgb) / <alpha-value>)',
+        sidebar: 'rgb(var(--sidebar-rgb) / <alpha-value>)',
+        'sidebar-foreground': 'rgb(var(--sidebar-foreground-rgb) / <alpha-value>)',
+        'sidebar-primary': 'rgb(var(--sidebar-primary-rgb) / <alpha-value>)',
+        'sidebar-primary-foreground': 'rgb(var(--sidebar-primary-foreground-rgb) / <alpha-value>)',
+        'sidebar-accent': 'rgb(var(--sidebar-accent-rgb) / <alpha-value>)',
+        'sidebar-accent-foreground': 'rgb(var(--sidebar-accent-foreground-rgb) / <alpha-value>)',
+        'sidebar-border': 'rgb(var(--sidebar-border-rgb) / <alpha-value>)',
+        'sidebar-ring': 'rgb(var(--sidebar-ring-rgb) / <alpha-value>)',
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        serif: ['var(--font-serif)'],
+        mono: ['var(--font-mono)'],
+      },
+      borderRadius: {
+        sm: 'var(--radius-sm)',
+        md: 'var(--radius-md)',
+        lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)',
+        DEFAULT: 'var(--radius)',
+      },
+      boxShadow: {
+        '2xs': 'var(--shadow-2xs)',
+        xs: 'var(--shadow-xs)',
+        sm: 'var(--shadow-sm)',
+        DEFAULT: 'var(--shadow)',
+        md: 'var(--shadow-md)',
+        lg: 'var(--shadow-lg)',
+        xl: 'var(--shadow-xl)',
+        '2xl': 'var(--shadow-2xl)',
+      },
+      letterSpacing: {
+        tighter: 'var(--tracking-tighter)',
+        tight: 'var(--tracking-tight)',
+        normal: 'var(--tracking-normal)',
+        wide: 'var(--tracking-wide)',
+        wider: 'var(--tracking-wider)',
+        widest: 'var(--tracking-widest)',
+      },
+      spacing: {
+        DEFAULT: 'var(--spacing)',
       },
     },
   },
   plugins: [],
 };
-
