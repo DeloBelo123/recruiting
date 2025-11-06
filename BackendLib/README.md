@@ -5,8 +5,10 @@ Dieser Ordner enthält wiederverwendbare Backend-Libraries. Um alle benötigten 
 ## Installation
 
 ```bash
-npm install --legacy-peer-deps axios zod dotenv @supabase/supabase-js stripe @stripe/stripe-js @langchain/core @langchain/ollama @langchain/groq @langchain/openai @langchain/anthropic @langchain/community @langchain/classic @langchain/textsplitters zod-validation-error redis pino pino-pretty web-push @modelcontextprotocol/sdk next
+npm install --legacy-peer-deps axios zod@^3.25.0 dotenv @supabase/supabase-js stripe @stripe/stripe-js @langchain/core @langchain/ollama @langchain/groq @langchain/openai @langchain/anthropic @langchain/community @langchain/classic @langchain/textsplitters zod-validation-error redis pino pino-pretty web-push @modelcontextprotocol/sdk next
 ```
+
+**Wichtig:** Zod muss mindestens Version 3.25.0 sein, da `@langchain/anthropic` diese Version benötigt.
 
 Oder installiere die TypeScript-Typen zusätzlich:
 

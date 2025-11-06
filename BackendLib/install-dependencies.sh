@@ -7,7 +7,7 @@ echo "📦 Installiere BackendLib Dependencies..."
 
 npm install --legacy-peer-deps \
   axios \
-  zod \
+  zod@^3.25.0 \
   dotenv \
   @supabase/supabase-js \
   stripe \
