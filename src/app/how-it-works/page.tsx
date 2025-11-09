@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -293,6 +293,22 @@ function DashboardSection() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 0.4, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+          className="mt-16 text-center"
+        >
+          <motion.a
+            href="/dashboard"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block px-10 py-5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all shadow-xl"
+          >
+            Jetzt Dashboard selber testen
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
@@ -300,6 +316,30 @@ function DashboardSection() {
 
 export default function HowItWorks() {
   const [activeTab, setActiveTab] = useState('flow');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const flowSection = document.getElementById('flow');
+      const dashboardSection = document.getElementById('dashboard');
+
+      if (!flowSection || !dashboardSection) return;
+
+      const flowTop = flowSection.getBoundingClientRect().top;
+      const dashboardTop = dashboardSection.getBoundingClientRect().top;
+      const navHeight = 100;
+
+      if (dashboardTop <= navHeight) {
+        setActiveTab('dashboard');
+      } else if (flowTop <= navHeight) {
+        setActiveTab('flow');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
