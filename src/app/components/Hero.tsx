@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
       <motion.div
+        initial={{ opacity: 0 }}
         animate={{
           scale: [1, 1.1, 1],
           opacity: [0.3, 0.5, 0.3],

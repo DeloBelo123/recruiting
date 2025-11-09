@@ -243,7 +243,7 @@ function ContactForm() {
             Schreib uns eine Nachricht
           </h2>
 
-          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="bg-card border border-primary/20 rounded-xl p-8 space-y-6 shadow-sm">
             <div>
               <label htmlFor="contact-name" className="block text-sm font-medium text-foreground mb-2">
                 Name *
@@ -254,7 +254,7 @@ function ContactForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
@@ -268,7 +268,7 @@ function ContactForm() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
@@ -282,7 +282,7 @@ function ContactForm() {
                 rows={6}
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                className="w-full px-4 py-3 bg-background border border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none transition-colors"
               />
             </div>
 

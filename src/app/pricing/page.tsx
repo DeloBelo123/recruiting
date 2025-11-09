@@ -149,7 +149,7 @@ function PilotOffer() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-      className="bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary rounded-2xl p-8 lg:p-12 mb-1"
+      className="bg-gradient-to-br from-primary/10 to-accent/10 border-2 border-primary/30 rounded-2xl p-8 lg:p-12 mb-1"
     >
       <div className="max-w-4xl mx-auto">
         <div className="flex items-center gap-3 mb-4">
@@ -246,7 +246,7 @@ function PricingForm() {
             Lass uns gemeinsam die beste Lösung für dein Unternehmen finden
           </p>
 
-          <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="bg-card border-2 border-primary/20 rounded-xl p-8 space-y-6 shadow-sm">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                 Name *
@@ -257,7 +257,7 @@ function PricingForm() {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border-2 border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
@@ -271,7 +271,7 @@ function PricingForm() {
                 required
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border-2 border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
@@ -285,7 +285,7 @@ function PricingForm() {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border-2 border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
@@ -299,7 +299,7 @@ function PricingForm() {
                 required
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full px-4 py-3 bg-background border-2 border-primary/20 rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
               />
             </div>
 
