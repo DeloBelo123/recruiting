@@ -147,28 +147,42 @@ export class SupabaseTable<T extends Record<string,any>> {
         return data;
     }
     /**
-     * @param where - die Filter die genau sagen welche Zeile upserted werden soll, sonst wird jede Zeile upserted!!!
+     * @param where - die Filter die genau sagen welche Werte in die upsert-Daten eingefügt werden sollen (für .eq() Filter)
      * @param upsert - die Daten die du upserten möchtest, als Objekt wo der key der Spaltenname ist und der value der neue Wert
+     * @param onConflict - die Spalte die für den Konflikt-Check verwendet wird (normalerweise Primary Key) - verwendet native Supabase .upsert()
      * @returns die upserteten Zeilen, also die Zeilen die du upsertet hast
      */
-    async upsert({where,upsert}:{ where:Array<{column:keyof T,is:string | number | boolean | Date | null | undefined}>, upsert:Partial<T> }){
-        // Supabase upsert funktioniert anders - wir müssen zuerst prüfen ob der Eintrag existiert
-        const existingRecord = await this.select({
-            columns: ["*"],
-            where: where,
-            first: true
-        });
-        
-        if (existingRecord) {
-            // Update existing record
-            return await this.update({
-                where: where,
-                update: upsert
-            });
-        } else {
-            // Insert new record
-            return await this.insert([upsert]);
+    async upsert({where,upsert,onConflict}:{ 
+        where:Array<{column:keyof T,is:string | number | boolean | Date | null | undefined}>, 
+        upsert:Partial<T>,
+        onConflict:keyof T | (string & {})
+    }){
+        if (!onConflict) {
+            throw new Error("upsert requires onConflict parameter");
         }
+
+        // Kombiniere where-Werte mit upsert-Daten für vollständiges Objekt
+        const combinedData: Partial<T> = { ...upsert };
+        for (const { column, is } of where) {
+            combinedData[column as keyof T] = is as T[keyof T];
+        }
+
+        // Flatten für verschachtelte Objekte (Dot-Notation)
+        const flatData = this.flattenNested(combinedData as Record<string, any>);
+
+        // Native Supabase .upsert() - atomar
+        const { data, error } = await supabase
+            .from(this.tableName)
+            .upsert(flatData, {
+                onConflict: onConflict as string,
+            })
+            .select();
+
+        if (error) {
+            throw new Error(`Error upserting data in ${this.tableName}: ${error.message}`);
+        }
+
+        return data;
     }
 }
 

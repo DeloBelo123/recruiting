@@ -7,11 +7,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Features', href: '#features' },
-    { name: 'How it works', href: '#how-it-works' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Kontakt', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'How it works', href: '/how-it-works' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Kontakt', href: '/kontakt' },
   ];
 
   return (
@@ -54,7 +53,7 @@ export default function Header() {
             className="hidden md:block"
           >
             <motion.a
-              href="#pricing"
+              href="/pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
@@ -104,7 +103,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#pricing"
+              href="/pricing"
               className="block px-6 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium text-center"
             >
               Jetzt testen

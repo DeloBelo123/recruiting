@@ -1,8 +1,12 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
+import TimeSavings from './components/TimeSavings';
 import Features from './components/Features';
-import HowItWorks from './components/HowItWorks';
-import Pricing from './components/Pricing';
+import Statistics from './components/Statistics';
+import Availability from './components/Availability';
+import ROI from './components/ROI';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
 export default function Main() {
@@ -10,9 +14,13 @@ export default function Main() {
     <>
       <Header />
       <Hero />
+      <TimeSavings />
       <Features />
-      <HowItWorks />
-      <Pricing />
+      <Statistics />
+      <Availability />
+      <ROI />
+      <Testimonials />
+      <FAQ />
       <Footer />
     </>
   );

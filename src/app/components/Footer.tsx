@@ -4,14 +4,13 @@ import { motion } from 'framer-motion';
 
 const footerLinks = {
   product: [
-    { name: 'Features', href: '#features' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'How it works', href: '#how-it-works' },
+    { name: 'Features', href: '/#features' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'How it works', href: '/how-it-works' },
   ],
   company: [
-    { name: 'Über uns', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Karriere', href: '#' },
+    { name: 'Über uns', href: '/kontakt#about' },
+    { name: 'Kontakt', href: '/kontakt' },
   ],
   legal: [
     { name: 'Datenschutz', href: '#' },

@@ -1,5 +1,7 @@
 import { createClient, type Provider } from "@supabase/supabase-js";
+import { SupabaseTable } from "./server";
 import axios from "axios";
+import { logger } from "../utils/pino-logger";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_KEY!
@@ -90,3 +92,18 @@ export async function OAuthLogin({provider = "google",scopes,redirectTo}:OAuthPr
         })
         if (SignInError) throw new Error("fehler beim OAuth Sign in!")  
     }
+
+export async function addUser<T extends {user_id:string}>({toTable}:{toTable:SupabaseTable<T>}){
+    const { data: { user }, error:getUserError } = await supabase.auth.getUser()
+    if(getUserError) throw new Error("Error beim user kriegen in der 'addUser' function, Error: " + getUserError)
+    if(!user) throw new Error("No user found")
+    const user_id_obj = await toTable.select({
+        columns:["user_id" as keyof T],
+        where:[{column:"user_id" as keyof T, is:user.id}],
+        first:true
+    })
+    if(user_id_obj) logger.info("User mit der id: " + user.id + " ist bereits in der Tabelle: " + toTable.tableName + " vorhanden!")
+    const user_obj = await toTable.insert([{user_id:user.id} as Partial<T>])
+    if(!user_obj) throw new Error("Error beim user in die Tabelle: " + toTable.tableName + " hinzufügen, Error: " + user_obj)
+    return true
+}

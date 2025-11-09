@@ -19,4 +19,15 @@ export const candidateSchema = z.object({
     job_title: z.string(),
 })
 
+export const unternehmenSchema = z.object({
+    Vorname: z.string(),
+    Nachname: z.string(),
+    Standort: z.string(),
+    Unternehmen: z.string(),
+    unternehmens_email: z.string().email(),
+    Telefon: z.string(),
+    anzahl_der_mitarbeiter: z.number(),
+})
+
 export const candidatesTable = new SupabaseTable<z.infer<typeof candidateSchema>>("candidates")
+export const unternehmenTable = new SupabaseTable<z.infer<typeof unternehmenSchema>>("unternehmen_termine")
