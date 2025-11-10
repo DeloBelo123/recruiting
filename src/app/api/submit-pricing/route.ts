@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { add_to_file, does_file_exist, create_file } from '../../../../BackendLib/utils/file-utils';
+import * as fs from 'fs/promises';
 import * as path from 'path';
 
 export async function POST(request: NextRequest) {
@@ -14,18 +14,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const projectRoot = path.resolve(process.cwd());
-    const filePath = path.join(projectRoot, 'price.txt');
+    const isVercel = process.env.VERCEL === '1';
+    const filePath = isVercel 
+      ? path.join('/tmp', 'price.txt')
+      : path.join(process.cwd(), 'price.txt');
 
     const timestamp = new Date().toISOString();
     const content = `\n--- Neue Preisvereinbarung ---\nDatum: ${timestamp}\nName: ${name}\nUnternehmen: ${company}\nE-Mail: ${email}\nTelefon: ${phone}\n---`;
 
-    const fileExists = await does_file_exist(filePath);
-    if (!fileExists) {
-      await create_file(filePath, 'Preisvereinbarungen\n');
+    try {
+      await fs.access(filePath);
+      await fs.appendFile(filePath, content, 'utf-8');
+    } catch {
+      await fs.writeFile(filePath, `Preisvereinbarungen\n${content}`, 'utf-8');
     }
-
-    await add_to_file(filePath, content);
 
     return NextResponse.json({ success: true });
   } catch (error) {
