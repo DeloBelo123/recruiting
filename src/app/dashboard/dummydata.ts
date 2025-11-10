@@ -7,6 +7,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440001",
     name: "Max Mustermann",
+    company: "TechCorp GmbH",
     contact_info: {
       email: "max.mustermann@example.com",
       phone: "+49 151 12345678",
@@ -20,6 +21,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440002",
     name: "Anna Schmidt",
+    company: "StartupXYZ",
     contact_info: {
       email: "anna.schmidt@example.com",
     },
@@ -32,6 +34,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440003",
     name: "Tom Weber",
+    company: "Digital Solutions AG",
     contact_info: {
       email: "tom.weber@example.com",
       phone: "+49 160 98765432",
@@ -45,6 +48,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440004",
     name: "Lisa Müller",
+    company: "WebDev Inc.",
     contact_info: {
       email: "lisa.mueller@example.com",
     },
@@ -57,6 +61,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440005",
     name: "David Fischer",
+    company: "CloudTech GmbH",
     contact_info: {
       email: "david.fischer@example.com",
       phone: "+49 170 55512345",
@@ -70,6 +75,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440006",
     name: "Sarah Becker",
+    company: "InnovateLab",
     contact_info: {
       email: "sarah.becker@example.com",
     },
@@ -82,6 +88,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440007",
     name: "Michael Koch",
+    company: "Enterprise Systems",
     contact_info: {
       email: "michael.koch@example.com",
       phone: "+49 175 77788899",
@@ -95,6 +102,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440008",
     name: "Julia Wagner",
+    company: "AppWorks",
     contact_info: {
       email: "julia.wagner@example.com",
     },
@@ -107,6 +115,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440009",
     name: "Chris Hoffmann",
+    company: "DevOps Solutions",
     contact_info: {
       email: "chris.hoffmann@example.com",
       phone: "+49 152 33344455",
@@ -120,6 +129,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440010",
     name: "Maria Schulz",
+    company: "MobileFirst",
     contact_info: {
       email: "maria.schulz@example.com",
     },
@@ -132,6 +142,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440011",
     name: "Peter Klein",
+    company: "RubyRails GmbH",
     contact_info: {
       email: "peter.klein@example.com",
       phone: "+49 151 99988877",
@@ -145,6 +156,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440012",
     name: "Nina Bauer",
+    company: "VueVentures",
     contact_info: {
       email: "nina.bauer@example.com",
     },
@@ -157,6 +169,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440013",
     name: "Felix Schneider",
+    company: "FullStack Pro",
     contact_info: {
       email: "felix.schneider@example.com",
       phone: "+49 163 11122233",
@@ -170,6 +183,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440014",
     name: "Sophie Richter",
+    company: "PythonDev",
     contact_info: {
       email: "sophie.richter@example.com",
     },
@@ -182,6 +196,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440015",
     name: "Lukas Zimmermann",
+    company: "iOS Experts",
     contact_info: {
       email: "lukas.zimmermann@example.com",
       phone: "+49 174 44455566",
@@ -195,6 +210,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440016",
     name: "Emma Lehmann",
+    company: "React Masters",
     contact_info: {
       email: "emma.lehmann@example.com",
     },
@@ -207,6 +223,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440017",
     name: "Jonas Wolf",
+    company: "Android Studio",
     contact_info: {
       email: "jonas.wolf@example.com",
       phone: "+49 175 66677788",
@@ -220,6 +237,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440018",
     name: "Hannah Meier",
+    company: "PHP Solutions",
     contact_info: {
       email: "hannah.meier@example.com",
     },
@@ -232,6 +250,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440019",
     name: "Benjamin Huber",
+    company: "Rust Labs",
     contact_info: {
       email: "benjamin.huber@example.com",
       phone: "+49 176 88899900",
@@ -245,6 +264,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440020",
     name: "Laura König",
+    company: "Svelte Solutions",
     contact_info: {
       email: "laura.koenig@example.com",
     },
@@ -257,6 +277,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440021",
     name: "Alexander Stein",
+    company: "Elixir Experts",
     contact_info: {
       email: "alexander.stein@example.com",
       phone: "+49 177 00011122",
@@ -270,6 +291,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440022",
     name: "Mia Lang",
+    company: "Junior Devs",
     contact_info: {
       email: "mia.lang@example.com",
     },
@@ -282,6 +304,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440023",
     name: "Noah Braun",
+    company: "Scala Systems",
     contact_info: {
       email: "noah.braun@example.com",
       phone: "+49 178 22233344",
@@ -295,6 +318,7 @@ export const dummyCandidates: Candidate[] = [
   {
     candidate_id: "550e8400-e29b-41d4-a716-446655440024",
     name: "Lea Sommer",
+    company: "Next.js Pro",
     contact_info: {
       email: "lea.sommer@example.com",
     },
