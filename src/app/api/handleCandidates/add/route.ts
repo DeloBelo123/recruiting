@@ -15,6 +15,7 @@ export async function POST(request:NextRequest){
         const data = candidateSchema.parse(await request.json())
         await candidatesTable.insert([{
             candidate_id: uuidv4() as UUID,
+            company: data.company,
             name: data.name,
             contact_info: {
                 email: data.contact_info.email,

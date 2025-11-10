@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Toast } from '../components/Toast';
 
 function ContactInfo() {
   const ref = useRef(null);
@@ -220,11 +221,36 @@ function ContactForm() {
     email: '',
     message: '',
   });
+  const [showToast, setShowToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Logik wird später implementiert
-    console.log('Contact form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/submit-contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        setShowToast(true);
+      } else {
+        const error = await response.json();
+        console.error('Error:', error);
+        alert('Fehler beim Absenden. Bitte versuche es erneut.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Fehler beim Absenden. Bitte versuche es erneut.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const ref = useRef(null);
@@ -232,6 +258,11 @@ function ContactForm() {
 
   return (
     <section ref={ref} className="py-20 lg:py-32 bg-background">
+      <Toast
+        message="Nachricht erfolgreich gesendet!"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -288,11 +319,12 @@ function ContactForm() {
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              disabled={isSubmitting}
+              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Nachricht senden
+              {isSubmitting ? 'Wird gesendet...' : 'Nachricht senden'}
             </motion.button>
           </form>
         </motion.div>

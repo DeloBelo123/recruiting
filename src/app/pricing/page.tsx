@@ -5,6 +5,7 @@ import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Toast } from '../components/Toast';
 
 const plans = [
   {
@@ -222,15 +223,45 @@ function PricingForm() {
     email: '',
     phone: '',
   });
+  const [showToast, setShowToast] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Logik wird später implementiert
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/submit-pricing', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', company: '', email: '', phone: '' });
+        setShowToast(true);
+      } else {
+        const error = await response.json();
+        console.error('Error:', error);
+        alert('Fehler beim Absenden. Bitte versuche es erneut.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Fehler beim Absenden. Bitte versuche es erneut.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="pricing-form" className="py-12 lg:py-12 bg-background">
+      <Toast
+        message="Preisvereinbarung erfolgreich abgesendet!"
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -305,11 +336,12 @@ function PricingForm() {
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              disabled={isSubmitting}
+              whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+              whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+              className="w-full px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Anfrage senden
+              {isSubmitting ? 'Wird gesendet...' : 'Anfrage senden'}
             </motion.button>
           </form>
         </motion.div>

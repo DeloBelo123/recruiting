@@ -1,0 +1,10 @@
+Nachrichten
+
+
+
+--- Neue Nachricht ---
+Datum: 2025-11-10T15:17:03.306Z
+Name: Delo
+E-Mail: faragdelo@gmail.com
+Nachricht: Ich liebe dich!
+---

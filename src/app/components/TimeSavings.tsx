@@ -19,9 +19,9 @@ export default function TimeSavings() {
           className="max-w-4xl mx-auto text-center"
         >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-            Spare{' '}
+            Im Recruiting{' '}
             <span className="text-primary">140% Zeit</span>{' '}
-            im Recruiting
+            Sparen
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto">
             Unsere Voice-AI übernimmt die zeitaufwändigsten Aufgaben im Recruiting-Prozess. 

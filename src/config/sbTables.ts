@@ -6,6 +6,7 @@ import { z } from "zod"
 
 export const candidateSchema = z.object({
     candidate_id: z.string().uuid(),
+    company: z.string(),
     call_id: z.string().optional(), //mach das später, nicht direkt als mvp weil braucht webhook von retell ai
     name: z.string(),
     contact_info: z.object({
