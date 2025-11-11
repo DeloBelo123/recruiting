@@ -80,7 +80,25 @@ export default function Datatable() {
         <div className="overflow-x-auto">
           <table className="w-full">
             <Headers />
-            <Body candidates={candidates} />
+            {candidates.length === 0 ? (
+              <tbody>
+                <tr>
+                  <td colSpan={8} className="p-0">
+                    <div className="flex items-center justify-center min-h-[calc(100vh-400px)]">
+                      <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="text-muted-foreground text-3xl font-medium"
+                      >
+                        Keine Kandidaten ausgewertet
+                      </motion.p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            ) : (
+              <Body candidates={candidates} />
+            )}
           </table>
         </div>
       </div>
