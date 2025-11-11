@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "VoiceRecruit",
+  title: "RecruitAI",
   description: "recruiteai is a platform that helps you recruit candidates for your company.",
 };
 

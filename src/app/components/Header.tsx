@@ -29,7 +29,7 @@ export default function Header() {
               transition={{ delay: 0.2, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
               className="text-2xl font-bold text-primary"
             >
-              VoiceRecruit
+              RecruitAI
             </motion.span>
           </div>
 
