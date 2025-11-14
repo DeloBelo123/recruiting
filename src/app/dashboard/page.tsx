@@ -5,8 +5,9 @@ import { motion } from "framer-motion"
 import Datatable from "./Datatable/Datatable"
 import Analytics from "./Analytics/Analytics"
 import Search from "./Search/Search"
+import Upload from "./Upload/Upload"
 
-type Page = "datatable" | "analytics" | "search"
+type Page = "datatable" | "analytics" | "search" | "upload"
 
 export default function Dashboard() {
   const [activePage, setActivePage] = useState<Page>("datatable")
@@ -15,6 +16,7 @@ export default function Dashboard() {
     { id: "datatable" as Page, label: "Datatable" },
     { id: "analytics" as Page, label: "Analytics" },
     { id: "search" as Page, label: "Suche" },
+    { id: "upload" as Page, label: "Upload" },
   ]
 
   return (
@@ -61,6 +63,7 @@ export default function Dashboard() {
           {activePage === "datatable" && <Datatable />}
           {activePage === "analytics" && <Analytics />}
           {activePage === "search" && <Search />}
+          {activePage === "upload" && <Upload />}
         </motion.div>
       </main>
     </div>
