@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-      user: "info@recruitai.de",
+      user: "delo@recruitvoiceai.de",
       pass: process.env.MAIL_PASS
     }
   });
@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   export default async function sendMailToMe({subject, text, attachments}: {subject: string, text: string, attachments?: { filename: string, content: string | Buffer }[]}) {
     try {
       const info = await transporter.sendMail({
-        from: `"RecruitAI" <info@recruitai.de>`,
+        from: `"RecruitAI" <delo@recruitvoiceai.de>`,
         to: `faragdelo@gmail.com`,
         subject,
         text,
