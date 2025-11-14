@@ -20,6 +20,13 @@
       "recommended": true,
       "suspicious": {
         "noUnknownAtRules": "off"
+      },
+      "style": {
+        "useShorthandArrayType": "off",
+        "useShorthandFunctionType": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "off"
       }
     },
     "domains": {
@@ -27,6 +34,18 @@
       "react": "recommended"
     }
   },
+  "overrides": [
+    {
+      "include": ["*.css"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noUnknownAtRules": "off"
+          }
+        }
+      }
+    }
+  ],
   "assist": {
     "actions": {
       "source": {
