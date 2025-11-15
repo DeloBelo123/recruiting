@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
+import { Logo } from "@/app/components/Logo"
 
 interface WelcomeScreenProps {
   customerName?: string | null
@@ -117,13 +117,7 @@ export default function WelcomeScreen({ customerName, onGetStarted }: WelcomeScr
               delay: 0.2
             }}
           >
-            <Image
-              src="/dummy.png"
-              alt="RecruitAI Logo"
-              width={100}
-              height={100}
-              className="object-contain"
-            />
+            <Logo size="large" />
           </motion.div>
         </div>
       </div>

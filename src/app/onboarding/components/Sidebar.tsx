@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
+import { Logo } from "@/app/components/Logo"
 
 interface SidebarProps {
   currentStep: number
@@ -123,13 +123,7 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
         }}
         className="mb-12 relative z-10"
       >
-        <Image
-          src="/dummy.png"
-          alt="RecruitAI Logo"
-          width={100}
-          height={100}
-          className="object-contain"
-        />
+        <Logo size="large" />
       </motion.div>
 
       {/* Steps */}
