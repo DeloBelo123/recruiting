@@ -41,6 +41,24 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
             <stop offset="100%" stopColor="rgb(139, 92, 246)" stopOpacity="0.1" />
           </linearGradient>
         </defs>
+        {/* Große Welle oben - füllt die Sidebar oben aus */}
+        <motion.path
+          d="M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z"
+          fill="rgb(142, 65, 239)"
+          fillOpacity="0.2"
+          animate={{
+            d: [
+              "M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z",
+              "M0,0 Q64,-180 128,0 Q192,-180 256,0 L256,1000 L0,1000 Z",
+              "M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z",
+            ],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
         {/* Unterschiedliche Wellen-Formen mit Animation */}
         <motion.path
           d="M0,180 Q80,120 160,180 T256,180 L256,1000 L0,1000 Z"
@@ -115,7 +133,7 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
       </motion.div>
 
       {/* Steps */}
-      <div className="flex-1 space-y-4 relative z-10">
+      <div className="flex-1 space-y-4 relative z-10 flex flex-col items-center">
         {stepLabels.map((label, index) => {
           const stepNumber = index + 1
           const isCompleted = currentStep > stepNumber
@@ -133,11 +151,11 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
                 damping: 20,
                 delay: index * 0.1
               }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-4"
             >
               {/* Step Number */}
               <motion.div
-                className={`flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all ${
+                className={`flex items-center justify-center w-14 h-14 rounded-full border-2 transition-all ${
                   isCompleted || isActive
                     ? "bg-primary border-primary text-primary-foreground"
                     : "bg-muted border-muted-foreground/30 text-muted-foreground opacity-40"
@@ -168,7 +186,7 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
                 }
               >
                 <motion.span
-                  className="font-semibold"
+                  className="font-semibold text-lg"
                   animate={isActive ? { scale: [1, 1.15] } : { scale: 1 }}
                   transition={
                     isCompleted
@@ -190,7 +208,7 @@ export default function Sidebar({ currentStep, totalSteps }: SidebarProps) {
 
               {/* Step Label */}
               <span
-                className={`font-medium transition-all ${
+                className={`font-medium text-base transition-all ${
                   isCompleted || isActive
                     ? "text-primary font-semibold"
                     : "text-muted-foreground opacity-40"

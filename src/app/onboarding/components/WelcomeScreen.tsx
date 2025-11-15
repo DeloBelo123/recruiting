@@ -34,6 +34,24 @@ export default function WelcomeScreen({ customerName, onGetStarted }: WelcomeScr
               <stop offset="100%" stopColor="rgb(139, 92, 246)" stopOpacity="0.1" />
             </linearGradient>
           </defs>
+          {/* Große Welle oben - füllt die Sidebar oben aus */}
+          <motion.path
+            d="M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z"
+            fill="rgb(142, 65, 239)"
+            fillOpacity="0.2"
+            animate={{
+              d: [
+                "M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z",
+                "M0,0 Q64,-180 128,0 Q192,-180 256,0 L256,1000 L0,1000 Z",
+                "M0,0 Q64,-150 128,0 Q192,-150 256,0 L256,1000 L0,1000 Z",
+              ],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
           {/* Unterschiedliche Wellen-Formen mit Animation */}
           <motion.path
             d="M0,180 Q80,120 160,180 T256,180 L256,1000 L0,1000 Z"

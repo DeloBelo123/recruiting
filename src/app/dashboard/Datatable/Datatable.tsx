@@ -68,7 +68,7 @@ export default function Datatable() {
               onChange={(e) => setUseDummyData(e.target.checked)}
               className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
             />
-            <span>Dummy-Daten verwenden</span>
+            <span>Demo-Daten verwenden</span>
           </label>
           <span className="text-sm text-muted-foreground">
             {candidates.length} {candidates.length === 1 ? "Kandidat" : "Kandidaten"}

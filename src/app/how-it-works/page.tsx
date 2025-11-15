@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -63,14 +64,15 @@ function FlowSection() {
     },
     {
       number: '02',
-      title: 'CSV-Dateien senden',
-      description: 'Sende die CSV-Dateien an csv@recruitvoiceai.de',
+      title: 'CSV-Dateien hochladen',
+      description: 'Lade deine CSV-Dateien über das Dashboard hoch',
       details: [
-        'Öffne dein E-Mail-Programm',
-        'Erstelle eine neue Nachricht an csv@recruitvoiceai.de',
-        'Füge beide CSV-Dateien als Anhang hinzu',
-        'Beschreibe kurz den Job-Titel oder die Position',
-        'Sende die E-Mail ab',
+        'Siehe Dashboard-Bereich weiter unten für eine detaillierte Anleitung',
+        'Öffne das Dashboard in deinem Browser',
+        'Navigiere zur Upload-Seite',
+        'Ziehe beide CSV-Dateien per Drag & Drop in den Upload-Bereich',
+        'Alternativ klicke auf den Upload-Bereich und wähle die Dateien aus',
+        'Die Dateien werden automatisch hochgeladen und verarbeitet',
       ],
     },
     {
@@ -123,14 +125,18 @@ function FlowSection() {
                   <h3 className="text-2xl font-bold text-foreground mb-3">{step.title}</h3>
                   <p className="text-lg text-muted-foreground mb-6">{step.description}</p>
                   <div className="bg-card border border-border rounded-lg p-6 space-y-3">
-                    {step.details.map((detail, detailIndex) => (
-                      <div key={detailIndex} className="flex items-start gap-3">
-                        <div className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-sm font-medium">
-                          {detailIndex + 1}
+                    {step.details.map((detail, detailIndex) => {
+                      const isFirstItem = detailIndex === 0;
+                      const isStep02 = step.number === '02';
+                      return (
+                        <div key={detailIndex} className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-sm font-medium">
+                            {isFirstItem && isStep02 ? '(0)' : isStep02 ? detailIndex : detailIndex + 1}
+                          </div>
+                          <span className="text-muted-foreground">{detail}</span>
                         </div>
-                        <span className="text-muted-foreground">{detail}</span>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -167,10 +173,11 @@ function FlowSection() {
           <p className="text-center text-muted-foreground mt-6">
             <strong>Wichtig:</strong> Jedes System, das CSV-Export unterstützt, funktioniert mit unserer AI.
             <br />
-            Sende einfach deine CSV-Dateien an{' '}
-            <a href="mailto:csv@recruitvoiceai.de" className="text-primary hover:underline">
-              csv@recruitvoiceai.de
+            Lade einfach deine CSV-Dateien über das{' '}
+            <a href="/dashboard" className="text-primary hover:underline">
+              Dashboard
             </a>
+            {' '}hoch.
           </p>
         </motion.div>
       </div>
@@ -186,6 +193,7 @@ function DashboardSection() {
     {
       title: 'Data Table',
       description: 'Übersicht aller Anrufe und Kandidaten',
+      image: '/data-table.png',
       features: [
         'Vollständige Liste aller Kandidaten',
         'Status-Anzeige (Qualifiziert, Nicht qualifiziert)',
@@ -199,6 +207,7 @@ function DashboardSection() {
     {
       title: 'Search',
       description: 'Schnelle Suche nach Kandidaten',
+      image: '/search.png',
       features: [
         'Suche nach Name, ID oder Email',
         'Suche nach Job-Titel',
@@ -211,6 +220,7 @@ function DashboardSection() {
     {
       title: 'Analytics',
       description: 'Statistiken und Auswertungen',
+      image: '/analytics.png',
       features: [
         'Gesamtanzahl Kandidaten',
         'Qualifizierungsrate in Prozent',
@@ -220,6 +230,20 @@ function DashboardSection() {
         'Qualifizierungsrate pro Position',
       ],
       purpose: 'Die Analytics-Seite zeigt dir alle wichtigen KPIs auf einen Blick. Verfolge deine Recruiting-Performance, identifiziere Trends und treffe datenbasierte Entscheidungen.',
+    },
+    {
+      title: 'Upload',
+      description: 'CSV-Dateien hochladen und verwalten',
+      image: '/upload.png',
+      features: [
+        'Drag & Drop Upload',
+        'CSV-Dateien hochladen',
+        'Kandidatenlisten importieren',
+        'Requirements-Dateien verwalten',
+        'Automatische Validierung',
+        'Upload-Status Anzeige',
+      ],
+      purpose: 'Die Upload-Seite ermöglicht es dir, einfach CSV-Dateien hochzuladen. Nutze Drag & Drop oder klicke auf den Upload-Bereich, um deine Kandidatenlisten und Requirements zu importieren.',
     },
   ];
 
@@ -252,9 +276,6 @@ function DashboardSection() {
             >
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <div className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-lg text-sm font-medium mb-4">
-                    {feature.title}
-                  </div>
                   <h3 className="text-3xl font-bold text-foreground mb-4">{feature.title}</h3>
                   <p className="text-lg text-muted-foreground mb-6">{feature.description}</p>
                   <p className="text-muted-foreground mb-8">{feature.purpose}</p>
@@ -278,16 +299,14 @@ function DashboardSection() {
                     ))}
                   </div>
                 </div>
-                <div className="bg-muted/30 border border-border rounded-lg p-8 min-h-[400px] flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="text-4xl mb-4">📊</div>
-                    <div className="text-muted-foreground">
-                      Screenshot von {feature.title}
-                    </div>
-                    <div className="text-sm text-muted-foreground mt-2">
-                      (Wird durch echten Screenshot ersetzt)
-                    </div>
-                  </div>
+                <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 min-h-[500px] flex items-center justify-center overflow-hidden">
+                  <Image
+                    src={feature.image}
+                    alt={`${feature.title} Screenshot`}
+                    width={1200}
+                    height={900}
+                    className="w-full h-auto rounded-lg shadow-xl"
+                  />
                 </div>
               </div>
             </motion.div>

@@ -134,7 +134,7 @@ export default function Analytics() {
             onChange={(e) => setUseDummyData(e.target.checked)}
             className="w-4 h-4 rounded border-border text-primary focus:ring-primary"
           />
-          <span>Dummy-Daten verwenden</span>
+          <span>Demo-Daten verwenden</span>
         </label>
       </div>
 
