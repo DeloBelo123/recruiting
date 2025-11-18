@@ -157,13 +157,27 @@ function FlowSection() {
             Unterstützte CRM/ATS-Systeme
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {crmSystems.map((system, index) => (
+            {crmSystems.slice(0, 3).map((system, index) => (
               <motion.div
                 key={system.name}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                 transition={{ delay: 0.5 + index * 0.05, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
                 className="bg-card border border-border rounded-lg p-4 text-center"
+              >
+                <div className="font-semibold text-foreground mb-1">{system.name}</div>
+                <div className="text-sm text-muted-foreground">{system.description}</div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="flex justify-center gap-4 max-w-4xl mx-auto mt-4">
+            {crmSystems.slice(3).map((system, index) => (
+              <motion.div
+                key={system.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                transition={{ delay: 0.5 + (index + 3) * 0.05, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+                className="bg-card border border-border rounded-lg p-4 text-center w-full sm:w-auto sm:max-w-[calc(50%-0.5rem)] lg:max-w-[calc(33.333%-0.67rem)]"
               >
                 <div className="font-semibold text-foreground mb-1">{system.name}</div>
                 <div className="text-sm text-muted-foreground">{system.description}</div>
