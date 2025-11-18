@@ -5,7 +5,7 @@ import DemoGif from './DemoGif';
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-white via-purple-700/20 via-60% to-white" >
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-linear-to-b from-purple-100/20 via-purple-700/20 to-purple-100/20" >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{
@@ -37,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight"
           >
             Spare{' '}
             <span className="text-primary relative inline-block">
@@ -57,7 +57,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-            className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 font-light"
+            className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground mb-8 max-w-2xl mx-auto lg:mx-0 font-light"
           >
             Unsere Voice-AI automatisiert Anrufe, qualifiziert Kandidaten und führt Gespräche – 
             rund um die Uhr. Konzentriere dich auf das Wesentliche.

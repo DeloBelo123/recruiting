@@ -30,7 +30,7 @@ export default function DemoGif({ className = '' }: DemoGifProps) {
       transition={{ delay: 0.4, duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
       className={`relative ${className}`}
     >
-      <div className="relative rounded-xl overflow-hidden shadow-2xl border-2 border-border bg-card">
+      <div className="relative rounded-xl overflow-hidden shadow-2xl border-2 border-border bg-card scale-105">
         <video
           ref={videoRef}
           className="w-full h-auto"
