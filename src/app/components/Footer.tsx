@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Logo } from './Logo';
 
 const footerLinks = {
   product: [
@@ -36,7 +37,9 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-primary mb-4">VoiceRecruit</h3>
+            <div className="mb-4">
+              <Logo size="medium" />
+            </div>
             <p className="text-muted-foreground text-sm">
               Automatisiere dein Recruiting mit KI-gestützten Voice-Interviews.
             </p>

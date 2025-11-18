@@ -6,7 +6,7 @@ type SafeResult<T> = {
 
 export function safe<T extends (...args: any[]) => any>(
     func: T,
-    selfHandle: "selfHandle" | "throw" = "throw"
+    selfHandle: "selfHandle" | "throw" = "throw"
 ) {
     return function wrapper(...args: Parameters<T>): 
         T extends (...args: any[]) => Promise<any> ? Promise<SafeResult<Awaited<ReturnType<T>>>> : SafeResult<ReturnType<T>> 

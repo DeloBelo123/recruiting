@@ -71,7 +71,13 @@ export default function Hero() {
               href="/pricing"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all shadow-xl hover:shadow-2xl"
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+                mass: 0.8,
+              }}
+              className="px-10 py-5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-primary/90 shadow-xl hover:shadow-2xl"
             >
               Jetzt starten
             </motion.a>
@@ -79,7 +85,13 @@ export default function Hero() {
               href="/how-it-works"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="px-10 py-5 bg-card text-foreground rounded-xl font-semibold text-lg hover:bg-card/80 transition-all border-2 border-border shadow-lg hover:shadow-xl"
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+                mass: 0.8,
+              }}
+              className="px-10 py-5 bg-card text-foreground rounded-xl font-semibold text-lg hover:bg-card/80 border-2 border-border shadow-lg hover:shadow-xl"
             >
               So funktioniert's
             </motion.a>
