@@ -76,12 +76,12 @@ export default function Main() {
       />
       <Header />
       <Hero />
-      <TimeSavings />
       <Features />
       <Statistics />
       <Availability />
       <ROI />
       <Testimonials />
+      <TimeSavings />
       <FAQ />
       <Footer />
     </>
